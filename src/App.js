@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  AppBar,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CssBaseline,
+  Grid,
+  Toolbar,
+  Container,
+  IconButton,
+  Button,
+  Box,
+} from "@mui/material";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import MenuIcon from "@mui/icons-material/Menu";
+import "./App.css";
+import Tourcard from "./Components/Tourcard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Container>
+        <Grid container spacing={5}>
+          <Tourcard />
+          <Tourcard />
+          <Tourcard />
+          <Tourcard />
+        </Grid>
+      </Container>
     </div>
   );
 }
