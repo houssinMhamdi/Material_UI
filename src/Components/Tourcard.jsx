@@ -1,65 +1,87 @@
 import React from "react";
 import { Grid, Paper, Typography, Box, Rating } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-export default function Tourcard() {
+import { createTheme, ThemeProvider } from "@mui/material";
+export default function Tourcard({ tour }) {
+  const { name, duration, rating, numberOfReviews, price, image } = tour;
+  const theme = createTheme({
+    components: {
+      MuiTypography: {
+        variants: [
+          {
+            props: {
+              variant: "subtitle2",
+            },
+            style: {
+              fontSize: 13,
+            },
+            props: {
+              variant: "subtitle3",
+            },
+            style: {
+              fontSize: 12,
+            },
+          },
+        ],
+      },
+    },
+  });
   return (
     <Grid item xs={3}>
-      <Paper elevation={3}>
-        <img
-          src="https://media.timeout.com/images/105124791/750/422/image.jpg"
-          alt="img"
-          className="img"
-        />
-        <Box paddingX={1}>
-          <Typography variant="subtitle1" component="h2">
-            Immerse into the falls
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <AccessTimeIcon
+      <ThemeProvider theme={theme}>
+        <Paper elevation={3}>
+          <img src={image} alt={name} className="img" />
+          <Box paddingX={1}>
+            <Typography variant="subtitle1" component="h2">
+              {name}
+            </Typography>
+          </Box>
+          <Box
             sx={{
-              width: "13px",
-              marginLeft: "8px",
+              display: "flex",
+              alignItems: "center",
             }}
-          />
-          <Typography variant="subtitle2" component="p" marginLeft={0.5}>
-            5 hours
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-          }}
-          marginTop={4}
-        >
-          <Rating
-            name="read-only"
-            value={4.5}
-            readOnly
-            precision={0.5}
-            size="small"
-          />
+          >
+            <AccessTimeIcon
+              sx={{
+                width: "13px",
+                marginLeft: "8px",
+              }}
+            />
+            <Typography variant="subtitle3" component="p" marginLeft={0.5}>
+              {duration} hours
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+            marginTop={4}
+          >
+            <Rating
+              name="read-only"
+              value={rating}
+              readOnly
+              precision={0.5}
+              size="small"
+            />
 
-          <Typography variant="subtitle2" component="p" marginLeft={0.5}>
-            4.5
-          </Typography>
+            <Typography variant="subtitle2" component="p" marginLeft={0.5}>
+              {rating}
+            </Typography>
 
-          <Typography variant="subtitle2" component="p" marginLeft={0.5}>
-            (424 reviews)
-          </Typography>
-        </Box>
-        <Box>
-          <Typography variant="h6" component="h3" marginLeft={0.5}>
-            From C $450
-          </Typography>
-        </Box>
-      </Paper>
+            <Typography variant="subtitle2" component="p" marginLeft={0.5}>
+              ({numberOfReviews} reviews)
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" component="h3" marginLeft={0.5}>
+              From C ${price}
+            </Typography>
+          </Box>
+        </Paper>
+      </ThemeProvider>
     </Grid>
   );
 }
