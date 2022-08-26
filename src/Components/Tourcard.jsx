@@ -47,7 +47,7 @@ export default function Tourcard() {
           />
 
           <Typography variant="subtitle2" component="p" marginLeft={0.5}>
-            4.5 
+            4.5
           </Typography>
 
           <Typography variant="subtitle2" component="p" marginLeft={0.5}>
@@ -56,7 +56,7 @@ export default function Tourcard() {
         </Box>
         <Box>
           <Typography variant="h6" component="h3" marginLeft={0.5}>
-            From C $465
+            From C $450
           </Typography>
         </Box>
       </Paper>
